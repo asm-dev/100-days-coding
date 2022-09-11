@@ -17,8 +17,6 @@ def crear_historia(lista1, lista2, lista3, autor):
 
 crear_historia(opciones_inicio, opciones_medio, opciones_final, nombre)
 
-de_nuevo = input("\n¿Quieres una nueva sugerencia? (S/N) ")
-
-while de_nuevo == "S":
+while input("\n¿Quieres una nueva sugerencia? (S/N) ") == "S":
     crear_historia(opciones_inicio, opciones_medio, opciones_final, nombre)
-    de_nuevo = input("\n¿Quieres una nueva sugerencia? (S/N) ")
+    input("\n¿Quieres una nueva sugerencia? (S/N) ")
