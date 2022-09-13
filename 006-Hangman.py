@@ -3,8 +3,7 @@ import random
 """  
 POR HACER -- Escribir documentacion
 """   
-# POR HACER -- While vidas, sustitucion espacios en blanco por letra
-
+# POR HACER -- Revisar sistema de vidas. Letras no repetidas. X Valores numericos
 
 def comprueba_letra (palabra, letra):
     posicion = []
@@ -21,14 +20,18 @@ print(espacios_blanco)
 
 vidas = 10
 
-letra = input("Dime una letra: ").upper()
-
-comprobacion = comprueba_letra(palabra, letra)
-
-if comprobacion == []:
-    print("La letra no esta")
-else:
-    print(f"La letra se encuentra en las posiciones {comprobacion}")
-
+while vidas > 0:
+    letra = input("Dime una letra: ").upper()
+    comprobacion = comprueba_letra(palabra, letra)
+    if comprobacion == []:
+        print("La letra no esta")
+        vidas -= 1
+        print(f"Te quedan {vidas} vidas")
+    else:
+        for i in comprobacion:
+            lista_espacios = list(espacios_blanco)
+            lista_espacios[i] = letra
+            espacios_blanco = ''.join(lista_espacios)
+        print(espacios_blanco)    
 
 
