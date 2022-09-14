@@ -6,13 +6,16 @@ from functions import comprueba_letra
 **********************
 Este programa emula el juego clásico del ahorcado.
 Toma una palabra de la lista "palabras" aleatoria, y genera el equivalente de espacios a rellenar.
-Calcula las vidas disponibles, y genera una lista vacía de letras. Después entra en un bucle que funciona siempre y cuando el usuario tenga vidas disponibles.
+Calcula las vidas disponibles, y genera una lista vacía de letras. 
+Después entra en un bucle que funciona siempre y cuando el usuario tenga vidas disponibles.
 Las vidas se van agotando conforme el usuario selecciona letras que no estén en la palabra (letra y palabra se comparan con la función compara_letra). 
-Si el usuario introduce la misma letra más de una vez, se le informa y se vuelve a solicitar que introduzca una letra.
+Si el usuario introduce la misma letra más de una vez, es decir, que ya se haya introducido previamente, se le informa y se vuelve a solicitar que introduzca una letra. 
+Los espacios en blanco se van sustituyendo por las letras pertinentes.
+Cuando todos los espacios en blanco se han rellenado, y por lo tando adivinado la palabra, el programa termina.
 
 POSIBLES MEJORAS/ITERACIONES:
 *****************************
-- Evitar el uso de valores numéricos, palabras enteras, etc. cuando se solicita una letra
+!!! Evitar el uso de valores numéricos, palabras enteras, etc. cuando se solicita una letra
 - Niveles de dificultad (dar opción de tener más o menos vidas)
 - Mejorar la UI
 - Dar la opción de jugar de nuevo, llevando un contador de palabras adivinadas (sin perder, perdiendo, etc. Hay varias opciones). Al jugar de nuevo,
@@ -36,19 +39,22 @@ print(f"Tienes {vidas} vidas. La palabra tiene {len(palabra)} caracteres.\n\n{es
 while vidas > 0:
     letra = input("Dime una letra: ").upper()
     while letra in letras:
-        print("Letra ya usada")
-        letra = input(f"Dime una letra que no sea {letras}, ya la has usado: ").upper()
+        letra = input(f"\nDime una letra que no sea {letras}, ya la has usado: ").upper()
     letras.append(letra)
     comprobacion = comprueba_letra(palabra, letra)
     if comprobacion == []:
-        print("La letra no esta")
         vidas -= 1
-        print(f"Te quedan {vidas} vidas")
+        print(f"\nLa letra no está en la palabra. Te quedan {vidas} vidas.\n")
     else:
         for i in comprobacion:
             lista_espacios = list(espacios_blanco)
             lista_espacios[i] = letra
             espacios_blanco = ''.join(lista_espacios)
         print(f"\n{espacios_blanco}\n")    
+    if espacios_blanco == palabra:
+        break
 
-print("Tienes cero vidas, se termina el juego")
+if vidas == 0:
+    print("Tienes cero vidas, se termina el juego")
+else:
+    print("Felicidades, has adivinado la palabra")
