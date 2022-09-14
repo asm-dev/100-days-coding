@@ -1,16 +1,10 @@
 import random
+from functions import comprueba_letra
 
 """  
-POR HACER -- Escribir documentacion
+¿Qué hace el programa y cómo lo hace?
 """   
-# POR HACER -- Revisar sistema de vidas. Letras no repetidas. X Valores numericos
-
-def comprueba_letra (palabra, letra):
-    posicion = []
-    for n in range(len(palabra)):
-        if palabra[n] == letra:
-            posicion.append(n)
-    return posicion
+# POR HACER -- Revisar sistema de vidas. Letras no repetidas. X Valores numericos. Premio cuando se completa, opcion volver a empezar
 
 palabras = ["casa", "manzana", "jarra", "postura"]
 palabra = random.choice(palabras).upper()
