@@ -1,9 +1,10 @@
-import random
-from functions import comprueba_letra
+
 
 """  
+
 ¿QUÉ HACE EL PROGRAMA?
 **********************
+
 Este programa emula el juego clásico del ahorcado.
 Toma una palabra de la lista "palabras" aleatoria, y genera el equivalente de espacios a rellenar.
 Calcula las vidas disponibles, y genera una lista vacía de letras. 
@@ -12,6 +13,7 @@ Las vidas se van agotando conforme el usuario selecciona letras que no estén en
 Si el usuario introduce la misma letra más de una vez, es decir, que ya se haya introducido previamente, se le informa y se vuelve a solicitar que introduzca una letra. 
 Los espacios en blanco se van sustituyendo por las letras pertinentes.
 Cuando todos los espacios en blanco se han rellenado, y por lo tando adivinado la palabra, el programa termina.
+
 
 POSIBLES MEJORAS/ITERACIONES:
 *****************************
@@ -25,7 +27,9 @@ evitar la repetición de palabras. Gamificación -- Premio cuando se completa.
 - Pulir pequeños detalles, como la manera en la que se muestra la lista de letras ya usadas, el uso del singular cuando son varias letras, etc.
 
 """   
-# QUEDA POR HACER MVP -- Cuando los espacios en blanco se han rellenando (espacios_blanco == palabra) el usuario gana/se sale del bucle
+
+import random
+from functions import comprueba_letra
 
 palabras = ["casa", "manzana", "jarra", "postura", "reloj", "colores", "regocijo"]
 palabra = random.choice(palabras).upper()
@@ -34,7 +38,7 @@ espacios_blanco = "_" * len(palabra)
 vidas = len(palabra)*2
 letras = []
 
-print(f"Tienes {vidas} vidas. La palabra tiene {len(palabra)} caracteres.\n\n{espacios_blanco}\n")
+print(f"Tienes {vidas} vidas. La palabra tiene {len(palabra)} letras.\n\n{espacios_blanco}\n")
 
 while vidas > 0:
     letra = input("Dime una letra: ").upper()
