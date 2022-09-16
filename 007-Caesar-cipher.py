@@ -20,5 +20,7 @@ while de_nuevo == True:
     nuevo_mensaje = encriptador_cesar(mensaje, encriptar, valor, abecedario)
     print(f"Tu nuevo mensaje es {nuevo_mensaje}")
 
-    if input("¿Quieres encriptar o desencriptar otro mensaje? (S/N) ") != "S":
+    if input("¿Quieres encriptar o desencriptar otro mensaje? (S/N) ").upper() != "S":
         de_nuevo = False
+
+## A solucionar/mejorar -- error con caracteres que no esten en el abc como "#" usando la lista abecedario
