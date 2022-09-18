@@ -1,4 +1,4 @@
-#Función empleada en el proyecto 006-Hangman
+# Función empleada en el proyecto 006-Hangman
 def comprueba_letra (palabra, letra):
     """
     Esta función nos informa de la posición de una letra en una palabra.
@@ -13,7 +13,7 @@ def comprueba_letra (palabra, letra):
     return posicion
 
 
-#Función empleada en el proyecto 007-Caesar-cipher, dentro de la funcion encriptador_cesar
+# Función empleada en el proyecto 007-Caesar-cipher, dentro de la funcion encriptador_cesar
 def pos_letra (letra, lista):
     """
     Esta función compara una letra con los elementos de una lista.
@@ -28,7 +28,7 @@ def pos_letra (letra, lista):
     return posiciones #Nos devuelve una lista, podemos conseguir el item con posiciones[0]
 
 
-#Función empleada en el proyecto 007-Caesar-cipher
+# Función empleada en el proyecto 007-Caesar-cipher
 def encriptador_cesar (mensaje, encriptar, num, abc):
     """
     Esta funcion nos permite cifrar y descifrar un mensaje. Es un encriptador.
@@ -70,3 +70,12 @@ def encriptador_cesar (mensaje, encriptar, num, abc):
 
     return nuevo_mensaje
         
+# Función empleada en el proyecto 008-Blind-auction
+def nuevos_datos (diccionario):
+    """
+    Esta funcion nos permite añadir un nuevo par clave-valor a un diccionario.
+    """
+    pujador = input("Nombre: ")
+    puja = input("Puja: ")
+    diccionario[pujador] = puja
+    return diccionario

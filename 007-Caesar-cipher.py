@@ -11,7 +11,7 @@ while de_nuevo == True:
     valor = int(input("\nNúmero:\n"))
     abecedario = list("abcdefghijklmnñopqrstuvwxyz")
 
-    #TESTEO:
+    # TESTEO:
     # hola_enc = encriptador_cesar("hola", 5, "E", abecedario)
     # hola_des = encriptador_cesar(hola_enc, 5, "D", abecedario)
     # print(hola_enc)

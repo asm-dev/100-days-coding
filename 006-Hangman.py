@@ -1,5 +1,3 @@
-
-
 """  
 
 ¿QUÉ HACE EL PROGRAMA?
@@ -42,23 +40,23 @@ print(f"Tienes {vidas} vidas. La palabra tiene {len(palabra)} letras.\n\n{espaci
 
 while vidas > 0:
 
-    #Pedimos una letra
+    # Pedimos una letra
     letra = input("Dime una letra: ").upper()
-    #Evitamos que se use una letra que ya se usó previamente (conseguimos esto con la lista vacía letras, y .append())
+    # Evitamos que se use una letra que ya se usó previamente (conseguimos esto con la lista vacía letras, y .append())
     while letra in letras:
         letra = input(f"\nDime una letra que no sea {letras}, ya la has usado: ").upper()
     letras.append(letra)
 
-    #Comprobamos si la letra introducida está en la palabra
+    # Comprobamos si la letra introducida está en la palabra
     comprobacion = comprueba_letra(palabra, letra)
 
-    #Si la letra no está en la palabra:
+    # Si la letra no está en la palabra:
     if comprobacion == []:
         vidas -= 1 
         print(f"\nLa letra no está en la palabra. Te quedan {vidas} vidas.\n")
-    #El bucle termina si vidas no es mayor que 0
+    # El bucle termina si vidas no es mayor que 0
 
-    #Si la letra sí está en la palabra:
+    # Si la letra sí está en la palabra:
     else:
         for i in comprobacion:
             lista_espacios = list(espacios_blanco)
@@ -66,11 +64,11 @@ while vidas > 0:
             espacios_blanco = ''.join(lista_espacios)
         print(f"\n{espacios_blanco}\n")    
     
-    #Si se ha completado la palabra
+    # Si se ha completado la palabra
     if espacios_blanco == palabra:
         break
 
-#Informamos de que el juego se termina, bien por haberse quedado sin vidas o por haber adivinado la palabra
+# Informamos de que el juego se termina, bien por haberse quedado sin vidas o por haber adivinado la palabra
 if vidas == 0:
     print("Tienes cero vidas, se termina el juego")
 else:
