@@ -7,21 +7,33 @@ def inputNaturalOCero(pregunta="Introduce un número entero mayor o igual a cero
         num = input(pregunta)
     return int(num)
 
-def operaciones (n1, n2, operador):
-    if operacion == "/":
-        return print(f"\nLa división es: {n1 / n2}")
-    elif operacion == "*":
-        return print(f"\nLa multiplicación es: {n1 * n2}")
-    elif operacion == "+":
-        return print(f"\nLa suma es: {n1 + n2}")
-    elif operacion == "-":
-        return print(f"\nLa resta es: {n1 - n2}")
-    else:
-        return print(f"\nSuma: {n1 + n2} \nResta: {n1 - n2} \nMultiplicación: {n1 * n2} \nDivision: {n1 // n2}")
+def multiplicacion (n1, n2):
+    return print(f"\nLa multiplicación de {n1} y {n2} es: {n1 * n2}")
 
-n1 = inputNaturalOCero()
-operacion = input("Opciones:\n\n    /\n    *\n    +\n    -\n    Todas\n\nEscoge una operación (/, *, +, -, o todas): ")
-n2 = inputNaturalOCero("\nDime un segundo número: ")
+def division (n1, n2):
+    return print(f"\nLa división de {n1} y {n2} es: {n1 / n2}")
 
-operaciones(n1, n2, operacion)
+def suma (n1, n2):
+    return print(f"\nLa suma de {n1} y {n2} es: {n1 + n2}")
 
+def resta (n1, n2):
+    return print(f"\nLa resta de {n1} y {n2} es: {n1 - n2}")
+
+operaciones = {
+    "/" : division,
+    "*" : multiplicacion,
+    "+" : suma,
+    "-" : resta
+}
+
+n1 = inputNaturalOCero ()
+
+operacion = input ("\nOpciones disponibles:\n\n    /\n    *\n    +\n    -\n\nTu opción: ")
+
+while not operacion in operaciones.keys():
+     operacion = input ("\nTienes que seleccionar una de las siguientes opciones:\n\n    /\n    *\n    +\n    -\n\nTu opción: ")
+
+n2 = inputNaturalOCero ("\nDime un segundo número: ")
+
+operacion_a_realizar = operaciones[operacion]
+operacion_a_realizar (n1, n2)
