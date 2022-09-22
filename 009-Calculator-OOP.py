@@ -14,7 +14,7 @@ class calculadora:
 
     def __init__(self, n1, n2):
         self.num1 = int(n1) # Float?
-        self.num2 = int(n2)
+        self.num2 = int(n2) 
 
     def sumar(self):
         print(f"\nLa suma de {self.num1} y {self.num2} es: {self.num1 + self.num2}")
@@ -33,6 +33,7 @@ operaciones_disponibles = ["+", "-", "/", "*"]
 num1= inputNaturalOCero ()
 
 operacion = input(f"\nOpciones disponibles:\n\n  {operaciones_disponibles[0]}\n  {operaciones_disponibles[1]}\n  {operaciones_disponibles[2]}\n  {operaciones_disponibles[3]}\n\nTu opción: ")
+
 while not operacion in operaciones_disponibles:
      operacion = input(f"\nTienes que seleccionar una de las siguientes opciones:\n\n  {operaciones_disponibles[0]}\n  {operaciones_disponibles[1]}\n  {operaciones_disponibles[2]}\n  {operaciones_disponibles[3]}\n\nTu opción: ")
 
