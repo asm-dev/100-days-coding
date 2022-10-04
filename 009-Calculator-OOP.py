@@ -2,7 +2,7 @@
 
 # POR HACER
 # *********
-# Mejorar mostrar() -> dejarlo todo en un solo print. No es fácil ni banal pero te lo dejo para que le des un pensao
+# Mejorar mostrar() -> dejarlo todo en un solo print
 # y también está pidiendo a gritos un método operar(signo) que una las dos líneas c.operacion = signo + c.mostrar()
 
 

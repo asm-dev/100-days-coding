@@ -1,0 +1,1 @@
+# Currently checking out online how this game works and thinking of ways in which I could emulate this game using Python
