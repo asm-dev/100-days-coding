@@ -1,35 +1,21 @@
-print('''
-*******************************************************************************\n
-    .-------------'```'----....,,__                        _,
-   |                               `'`'`'`'-.,.__        .'(
-   |                                             `'--._.'   )
-   |                                                   `'-.<
-   \               .-'`'-.                            -.    `(
-    \               -.o_.     _                     _,-'`\    |
-     ``````''--.._.-=-._    .'  \            _,,--'`      `-._(
-       (^^^^^^^^`___    '-. |    \  __,,..--'                 `
-        `````````   `'--..___\    |`
-                              `-.,'                   EN BÚSQUEDA DE LA BALLENA
+from ASCII import whale
 
-*******************************************************************************
-''')
+print(whale)
 
-print('Bienvenido a "En búsqueda de la ballena", ¡una historia fascinante! \nTu misión es encontrar la ballena.')
-
-opcion1 = input("\n\n\nEstás regresando a puerto, pero dudas si poner rumbo noroeste o noroeste. (NO/NE) ").lower()
-if opcion1 == "no":
-  opcion2 = input("\nMientras vuelves al puerto, empiezas a ver los colores del cielo cambiar. Es un atardecer precioso. ¿Quieres quedarte a verlo un poco más? (S/N) ").lower()
-  if opcion2 == "s":
-    opcion3 = input("\nEs una noche cálida de verano, y ya casi llegando al puerto, tranquilo tras un maravilloso atardecer, desde la proa, sopesas la idea de darte un baño. Tienes tres opciones, ignorar tus deseos y regresar a puerto, impulsivamente desnudarte y tirarte al agua sin darle mucha vuelta, terminar de ver el atardecer un poquito más y tirarte al agua. ¿Qué opción escoges? (1/2/3/otra) ").lower()
-    if opcion3 == "1":
-      print("\nRefunfuñando, vuelves a puerto, sin haber avistado ninguna ballena. Vuelve a intentarlo.")
-    elif opcion3 == "2":
-      print("\nTe lanzas al agua y disfrutas muchísimo del chapuzón, estás tan entretenido nadando que no te das ni cuenta de que una ballena está pasando detrás de tu barco. Regresas a casa sin haber visto la ballena. Vuelve a intentarlo.")
-    elif opcion3 == "3":
-      print("\nMientras ves el sol en el horizonte, con calma, al ritmo del sol, te desnudas y bajas al agua. Ya en el agua, te das cuenta de que hay unas ondas extrañas. Sigues las ondas a nado, y según das la vuelta al barco, de repente, ves un chorro de agua gigantesco, seguido por una cola enorme que, como el sol, se mete en el agua ¡Es una ballena!")
+opt_1 = input("\n\n\nYou're coming back from the port, but you doubt whether to head northwest or northeast. (NW/NE) ").lower()
+if opt_1 == "no":
+  opt_2 = input("\nAs you're coming back from the port, you realise that the sky colours are changing. It's a beautifl sunset. Would you like to stay a little longer? (Y/N) ").lower()
+  if opt_2 == "s":
+    opt_3 = input("\nIt is a warm summer night, and almost reaching the port, calm after a wonderful sunset, from the bow, you consider the idea of ​​taking a bath. You have three options, ignore your wishes and return to port, impulsively take your clothes off and jump into the water without giving it much thought, or finish watching the sunset a little longer and jump into the water. Which option do you choose? (1/2/3/another) ").lower()
+    if opt_3 == "1":
+      print("\nGrumbling, you return to port, without having sighted any whales. Try again.")
+    elif opt_3 == "2":
+      print("\nYou jump into the water and enjoy being in the water so much, you are so amused swimming that you don't even realize that a whale is passing behind your boat. You come home without having seen the whale. Try again.")
+    elif opt_3 == "3":
+      print("\nWhile you watch the sun on the horizon, calmly, to the rhythm of the sun, you take your clothes off and get into the water. Already in the water, you realize that there are some strange waves around you. You swim and follow the waves, and as you go around the boat, suddenly, you see a gigantic jet of water, followed by a huge tail that, like the sun, goes into the water. It's a whale!")
     else:
-      print("\nDesafortunadamente, no avistas ninguna ballena. No obstante, regresas contento a puerto. Vuelve a intentarlo, para encontrar la ballena.")
+      print("\nUnfortunately, you don't see any whales. However, you come back home happily. Try again to find the whale.")
   else:
-    print("\nLlegas sano y salvo a puerto, tras ver un maravilloso atarceder, pero no avistas ninguna ballena. Vuelve a intentarlo.")
+    print("\nYou come back home safe and sound, after a marvellous sunset. However, you've missed the whale this time. Please try again.")
 else:
-  print("\nLlegas sano y salvo a puerto, pero no avistas ninguna ballena. Vuelve a intentarlo.")
+  print("\nYou come back home safe and sound. Sadly, you've missed the whale. Please try again.")

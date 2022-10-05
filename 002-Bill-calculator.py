@@ -1,16 +1,13 @@
-print("Vamos a calcular cuánto ponemos de propina entre varias personas ")
-cuenta = float(input("¿Cuánto fue la cuenta? "))
-propina = input("¿Qué porcentaje queremos pagar? 10%, 12%, or 15%? ")
-personas = int(input("¿Entre cuántas personas se divide la cuenta? "))
+print("Welcome to your bill calculator ")
 
-if propina[-1] == "%":
-    propina = propina[:-1]
-    propina = int(propina)
-else:
-    propina = int(propina)
+bill = float(input("How much was the bill? "))
+tip = input("What percentage would you like to pay as tip? Please add a percentage; e.g. 10% ")
+people = int(input("How many people are paying? "))
 
-total_propina = cuenta * (propina / 100)
-total_cuenta = cuenta + total_propina
-pago_persona = round(total_cuenta / personas, 2)
+if tip[-1] == "%":
+    tip = tip[:-1]
 
-print(f"Cada persona debe pagar: {pago_persona}€")
+tip = int(tip)
+
+# Individual bills are calculated dividing bill + tip among the people. This result is then rounded.
+print(f"Each person has to pay: {round(((bill + (bill * (tip /100))) / people), 2)} €")

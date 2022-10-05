@@ -1,61 +1,61 @@
 import random
 
-#Transformador de elecciones de número al valor (Piedra, papel o tijera)
-def conversion (opcion):
-    if opcion == 1:
-        return "Piedra"
-    elif opcion == 2:
-        return "Papel"
+# Options converter - from numeric value to rock, paper or scissor
+def converter(choice):
+    if choice == 1:
+        return "Rock"
+    elif choice == 2:
+        return "Paper"
     else:
-        return "Tijera"
+        return "Scissors"
 
-#Comparador de elecciones
-def comparacion (opt1, opt2):
-    if opt1 == 1 and opt2 == 3:
+# Rock paper scissors comparator 
+def comparator(choice_1, choice_2):
+    if choice_1 == 1 and choice_2 == 3:
         return True
-    elif opt1 == 2 and opt2 == 1:
+    elif choice_1 == 2 and choice_2 == 1:
         return True
-    elif opt1 == 3 and opt2 == 2:
+    elif choice_1 == 3 and choice_2 == 2:
         return True
     return False
 
 score = 0
-jugar = True
+play = True
 
-while jugar:
+while play:
     
-    #Pedimos datos
-    opcion_usuario = input("\n¿Qué escoges, piedra, papel o tijera? (1/2/3) ")
+    # We get the user's choice
+    user_choice = input("\nRock, paper or scissors? Please type 1 to chose rock, 2 for paper and 3 for scissors. ")
 
-    while opcion_usuario != "1" and opcion_usuario != "2" and opcion_usuario != "3":
-        print("\nDebes seleccionar 1, 2 o 3, dependiendo de tu elección.")
-        opcion_usuario = input("¿Qué escoges, piedra, papel o tijera? (1/2/3) ")
+    # We check that their user is either 1, 2 or 3
+    while user_choice != "1" and user_choice != "2" and user_choice != "3":
+        user_choice = input("Please choose 1, 2 or 3 depending on what your choice is. Please type 1 to chose rock, 2 for paper and 3 for scissors. ")
 
-    opcion_usuario = int(opcion_usuario)
-    opcion_ordenador = random.choice(range(1,4))
+    # We transform the user's choice (str) into an integer and get the computers choice, which will be either 1, 2, or 3
+    user_choice = int(user_choice)
+    comp_choice = random.choice(range(1,4))
 
-    #Mostramos las elecciones de cada uno
-    print(f"Tu elección es: {conversion(opcion_usuario)}")
-    print(f"La elección del ordenador es: {conversion(opcion_ordenador)}\n")
+    # We show the choices to the user
+    print(f"\nYour choice is: {converter(user_choice)} \nThe computer's choice is: {converter(comp_choice)}\n")
+  
+    # We compare the choices to determine who's won
+    user_vs_comp = comparator (user_choice, comp_choice)
+    comp_vs_user = comparator (comp_choice, user_choice)
 
-    #Evaluamos si el ordenador o el usuario gana
-    usuario_vs_ordenador = comparacion (opcion_usuario, opcion_ordenador)
-    ordenador_vs_usuario = comparacion (opcion_ordenador, opcion_usuario)
-
-    #Mostramos los resultados 
-    #Modificamos y mostramos el score
-    if usuario_vs_ordenador == True:
-        print("Has ganado")
+    # We show the results and change and show the score 
+    if user_vs_comp == True:
+        print("You've won")
         score += 1
-    elif ordenador_vs_usuario == True:
-        print ("Has perdido")
+    elif comp_vs_user == True:
+        print ("You've lost")
         score -= 1
     else:
-        print("Vuelvelo a intentar")
+        print("No one wins. Try again")
 
-    print(f"Tu score es: {score}")
+    print(f"Your score is: {score}")
 
-    de_nuevo = input("\n¿Quieres jugar de nuevo? (S/N) ")
-    if de_nuevo == "N":
-        jugar = False
+    # We ask the user if they would like to play again. Every input but "N" o "n" will be taken as 'continue to play'.
+    again = input("\nWould you like to play again? (Y/N) ").upper()
+    if again == "N":
+        play = False
     
