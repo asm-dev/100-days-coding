@@ -1,35 +1,37 @@
 import random
 
-letras = list("qwertyuiopasdfghjklzxcvbnm")
-numeros = list("1234567890")
-simbolos = list("!£$%^&*()_+")
+def char_entry(char_type):
+  return int(input(f"\nHow many {char_type} would you like to add? "))
 
-saludo= "Bienvenido al generador de contraseñas\n"
+def random_char(accum, num_char, char_list):
+  for n in range (0, num_char): 
+    accum.append(random.choice(char_list))
+  return accum
 
+letters = list("qwertyuiopasdfghjklzxcvbnm")
+nums = list("1234567890")
+syms = list("!£$%^&*()_+")
+
+saludo= "Welcome to your password generator\n"
 
 print(f"\n{saludo}")
 print("*" * (len(saludo) - 1))
 
-num_letras = int(input("\n¿Cuántas letras quieres añadir? ")) #5
-num_simbolos = int(input("\n¿Cuántos símbolos "))
-num_numeros = int(input("\n¿Cuántos números? "))
+num_letters = char_entry("letters")
+num_syms = char_entry("symbols")
+num_nums = char_entry("numbers")
 
-caracteres_contrasena = []
+password_list = []
 
-for n in range(1, num_letras + 1): #12345 = 5 items = 5 times 
-  caracteres_contrasena.append(random.choice(letras)) #append 5 letras aleatorias
+random_letters = random_char(password_list, num_letters, letters)
+random_numbers = random_char(password_list, num_nums, nums)
+random_symbols = random_char(password_list, num_syms, syms)
 
-for n in range(1, num_simbolos + 1): 
-  caracteres_contrasena.append(random.choice(simbolos))
+random.shuffle(password_list)
 
-for n in range(1, num_numeros + 1): 
-  caracteres_contrasena.append(random.choice(numeros))
+password = ""
+for char in password_list:
+  password += char
 
-random.shuffle(caracteres_contrasena)
-
-contrasena = ""
-
-for caracter in caracteres_contrasena:
-  contrasena += caracter
-
-print(f"\nTu contraseña es: {contrasena}")
+print(f"\nTu contraseña es: {password}")
+print(len(password))

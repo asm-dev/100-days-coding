@@ -39,15 +39,15 @@ while play:
     print(f"\nYour choice is: {converter(user_choice)} \nThe computer's choice is: {converter(comp_choice)}\n")
   
     # We compare the choices to determine who's won
-    user_vs_comp = comparator (user_choice, comp_choice)
-    comp_vs_user = comparator (comp_choice, user_choice)
+    user_vs_comp = comparator(user_choice, comp_choice)
+    comp_vs_user = comparator(comp_choice, user_choice)
 
     # We show the results and change and show the score 
     if user_vs_comp == True:
         print("You've won")
         score += 1
     elif comp_vs_user == True:
-        print ("You've lost")
+        print("You've lost")
         score -= 1
     else:
         print("No one wins. Try again")
