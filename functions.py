@@ -12,8 +12,8 @@ def letter_finder(word, letter):
     return idx
 
 
-# Función empleada en el proyecto 007-Caesar-cipher, dentro de la funcion encriptador_cesar
-def pos_letra (letra, lista):
+# 007-Caesar cipher
+def letter_idx(letra, lista):
     """
     Esta función compara una letra con los elementos de una lista.
     Se itera la lista y se compara cada uno de los elementos de la lista con la letra.
@@ -28,7 +28,7 @@ def pos_letra (letra, lista):
 
 
 # Función empleada en el proyecto 007-Caesar-cipher
-def encriptador_cesar (mensaje, encriptar, num, abc):
+def caesar_cipher(mensaje, encriptar, num, abc):
     """
     Esta funcion nos permite cifrar y descifrar un mensaje. Es un encriptador.
     Los param son el mensaje, el número de saltos en la lista, la dirección de los saltos (+/D para encriptar, -/IZQ para desencriptar) y una lista de valores (generalmente un abecedario)
@@ -38,7 +38,7 @@ def encriptador_cesar (mensaje, encriptar, num, abc):
     if encriptar == "D":
         num = -num 
         print(f"\nTu mensaje es {mensaje}, y lo vamos a desencriptar, usando un valor de {num}\n")
-    elif encriptar == "E":
+    elif encriptar == "C":
         print(f"\nTu mensaje es {mensaje}, y lo vamos a encriptar, usando un valor de {num}\n")
     else:
         print("\nEncriptar debe de ser D o E, la función no admite otras opciones para este parámetro\n")
@@ -48,7 +48,7 @@ def encriptador_cesar (mensaje, encriptar, num, abc):
 
     for letra in lista_mensaje: #Iteramos sobre el mensaje (lista compuesta por cada una de las letras del mensaje a encriptar)
 
-        posicion_letra = pos_letra(letra, abc) #Comparamos cada letra del mensaje con las letras del abecedario, cuando hay coincidencia, nos devuelve el index en el abcedario
+        posicion_letra = letter_idx(letra, abc) #Comparamos cada letra del mensaje con las letras del abecedario, cuando hay coincidencia, nos devuelve el index en el abcedario
         nueva_posicion_letra = posicion_letra[0] + num #Añade el valor al index de la letra del mensaje
 
         if nueva_posicion_letra > len(abc): #Puede ser que la nueva posición sea mayor que la longitud del abecedario, por ejemplo, index de Z + 5
@@ -70,7 +70,7 @@ def encriptador_cesar (mensaje, encriptar, num, abc):
     return nuevo_mensaje
         
 # Función empleada en el proyecto 008-Blind-auction
-def nuevos_datos (diccionario):
+def add_bid(diccionario):
     """
     Esta funcion nos permite añadir un nuevo par clave-valor a un diccionario.
     """

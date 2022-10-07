@@ -1,36 +1,28 @@
-from functions import pos_letra  
-from functions import encriptador_cesar
+from functions import caesar_cipher
 
-def evalua (str, abc):
-        for letra in str:
-            if not letra in abc:
+def letters_in_abc (word, abc):
+        for char in word:
+            if not char in abc:
                 return False
 
-print(f"\nBienvenido al encriptador César\n")
+print("\nWelcome to Caesar Cipher\n")
 
-abecedario = list("abcdefghijklmnñopqrstuvwxyz")
+abc = list("abcdefghijklmnñopqrstuvwxyz")
 
-de_nuevo = True
-while de_nuevo == True:
+again = True
+while again == True:
 
-    mensaje = input("\nEscribe tu mensaje (sin espacios):\n").lower()
-    encriptar = input("\nEscribe D para desencriptar, E para encriptar:\n").upper()
-    valor = int(input("\nNúmero:\n"))
+    message = input("\nType your messages (without whitespaces):\n").lower()
+    cipher_dir = input(f'\nType C to cipher "{message}" or D to decipher it:\n').upper()
+    number_pos = int(input("\nPlease add a number:\n"))
     
-    while evalua (mensaje, abecedario) == False:
-        print(f"\nAl menos uno de los caracteres introducidos no se encuentra en el abecedario. Puedes introducir mensajes que contengan los siguientes caracteres {abecedario}.\n\nPor favor introduce un mensaje válido.\n")
-        mensaje = input("\nEscribe tu mensaje (sin espacios):\n").lower()
-        encriptar = input("\nEscribe D para desencriptar, E para encriptar:\n").upper()
-        valor = int(input("\nNúmero:\n"))
+    while letters_in_abc(message, abc) == False:
+        print(f"\nWe can't use some of the characters that you have used. You can use these characters in your message: {abc}.\n\nPlease add a submit a new message.\n")
+        message = input("\nType your messages (without whitespaces):\n").lower()
+        cipher_dir = input(f'\nType C to cipher "{message}" or D to decipher it:\n').upper()
+        number_pos = int(input("\nPlease add a number:\n"))
     
-    nuevo_mensaje = encriptador_cesar(mensaje, encriptar, valor, abecedario)
-    print(f"Tu nuevo mensaje es {nuevo_mensaje}")
+    print(f'Your new message is "{caesar_cipher(message, cipher_dir, number_pos, abc)}"')
         
-    # TESTEO:
-    # hola_enc = encriptador_cesar("hola", 5, "E", abecedario)
-    # hola_des = encriptador_cesar(hola_enc, 5, "D", abecedario)
-    # print(hola_enc)
-    # print(hola_des)
-
-    if input("\n¿Quieres encriptar o desencriptar otro mensaje? (S/N) ").upper() != "S":
-        de_nuevo = False
+    if input("\nWould you like to cipher or decipher another message? (Y/N) ").upper() != "Y":
+        again = False

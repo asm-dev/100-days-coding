@@ -1,23 +1,20 @@
-from functions import nuevos_datos
+from functions import add_bid
 
-# MVP, bastantes cositas por mejorar. 
-# Este programa permite a varios usuarios realizar subastas, nos devuelve el ganador de la subasta.
+bids = {}
 
-diccionario = {}
+# We give the option to add more one or more bid participants
+more_bids = "Y"
+while more_bids == "Y":
+    add_bid(bids)
+    more_bids= input("Are there more bids? (Y/N) ").upper()
 
-# Damos la opción de crear más entradas/participantes en la puja
-mas_pujas = "S"
-while mas_pujas == "S":
-    nuevos_datos(diccionario)
-    mas_pujas = input("¿Hay más pujadores? (S/N) ").upper()
+# We gather data from the bids dictionary, creating one list for bidders and another for bifs
+bids_list = list(bids.values())
+bidders_list = list(bids.keys())
 
-# Creamos dos listas, una con los valores y otro con las claves
-lista_valores = list(diccionario.values())
-lista_pujadores = list(diccionario.keys())
+# We calculate the biggest bid
+win_bid = max(bids_list)
 
-# Obtenemos la puja mayor usando el método max
-valor_mayor = max(lista_valores)
-
-# Empleamos index para conseguir la clave del valor ganador, que es el ganador de la puja
-print(f"El ganador de la puja es: {lista_pujadores[lista_valores.index(valor_mayor)]}")
+# Based on the biggest bid's index, we compare bids and bidders lists and get the bid's winner
+print(f"The winner is: {bidders_list[bids_list.index(win_bid)]}")
 
