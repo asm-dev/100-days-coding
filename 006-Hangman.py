@@ -1,75 +1,76 @@
 """  
 
-¿QUÉ HACE EL PROGRAMA?
-**********************
+What does this program do?
+**************************
+This program emulates the classic hangman game.
+It takes a word from the random "words" list, and generates the equivalent number of spaces to fill.
+It calculates the lives available, and generates an empty list of letters.
+It then goes into a loop that works as long as the user has any remaining live.
+Lives run out as the user selects letters that aren't in the word (letter and word are compared using the compare_letter() function).
+If the user enters the same letter more than once, meaning that it has already been entered previously, thay're notified and prompted to enter a letter.
+Blank spaces are replaced by the appropriate letters when there's a match.
+Once all the blanks have been filled in, and therefore the word guessed, the program ends.
 
-Este programa emula el juego clásico del ahorcado.
-Toma una palabra de la lista "palabras" aleatoria, y genera el equivalente de espacios a rellenar.
-Calcula las vidas disponibles, y genera una lista vacía de letras. 
-Después entra en un bucle que funciona siempre y cuando el usuario tenga vidas disponibles.
-Las vidas se van agotando conforme el usuario selecciona letras que no estén en la palabra (letra y palabra se comparan con la función compara_letra). 
-Si el usuario introduce la misma letra más de una vez, es decir, que ya se haya introducido previamente, se le informa y se vuelve a solicitar que introduzca una letra. 
-Los espacios en blanco se van sustituyendo por las letras pertinentes.
-Cuando todos los espacios en blanco se han rellenado, y por lo tando adivinado la palabra, el programa termina.
+"""  
 
-
-POSIBLES MEJORAS/ITERACIONES:
-*****************************
-!!! Evitar el uso de valores numéricos, palabras enteras, etc. cuando se solicita una única letra
-- Niveles de dificultad (dar opción de tener más o menos vidas)
-- Mejorar la UI
-- Dar la opción de jugar de nuevo, llevando un contador de palabras adivinadas (sin perder, perdiendo, etc. Hay varias opciones). Al jugar de nuevo,
-evitar la repetición de palabras. Gamificación -- Premio cuando se completa.
-- Generar una lista mayor de palabras. 
-- Repensar si el programa podría ser mejorado con funciones, POO, etc.
-- Pulir pequeños detalles, como la manera en la que se muestra la lista de letras ya usadas, el uso del singular cuando son varias letras, etc.
-
-"""   
+# Potential further improvements/iterations
+# *****************************************
+# - Avoid using numerical values, whole words, etc. a single letter is what we need and can use
+# - Add difficulty levels (e.g. by changing how many lives an user gets)
+# - UI
+# - Give the option to play again, keeping a counter of guessed words (without losing, losing, etc. There are several options here)
+# - Gamification - reward the user when they've guessed a word
+# - Avoid repetition of words, have a wider selection 
+# - Review if the program could be improved with functions, OOP, etc.
+# - The "end" if/else could be added to the while loop
+# - Polish a few details details, such as the way in which the list of letters already used is displayed, the texts syntax, etc.
+ 
 
 import random
-from functions import comprueba_letra
+from functions import letter_finder
 
-palabras = ["casa", "manzana", "jarra", "postura", "reloj", "colores", "regocijo"]
-palabra = random.choice(palabras).upper()
-espacios_blanco = "_" * len(palabra)
+words = ["apple", "house", "cup", "eagle", "posture", "colours", "clock"]
+word = random.choice(words).upper()
+white_spaces = "_" * len(word)
 
-vidas = len(palabra)*2
-letras = []
+lives = len(word)*2
+letters = []
 
-print(f"Tienes {vidas} vidas. La palabra tiene {len(palabra)} letras.\n\n{espacios_blanco}\n")
+print(f"You've got {lives} lives. The word you have to guess has {len(word)} letters.\n\n{white_spaces}\n")
 
-while vidas > 0:
+while lives > 0:
 
-    # Pedimos una letra
-    letra = input("Dime una letra: ").upper()
-    # Evitamos que se use una letra que ya se usó previamente (conseguimos esto con la lista vacía letras, y .append())
-    while letra in letras:
-        letra = input(f"\nDime una letra que no sea {letras}, ya la has usado: ").upper()
-    letras.append(letra)
+    # We ask the user to guess a letter
+    letter = input("Try to guess a letter: ").upper()
 
-    # Comprobamos si la letra introducida está en la palabra
-    comprobacion = comprueba_letra(palabra, letra)
+    # We avoid the use of previously used letters
+    while letter in letters:
+        letter = input(f"\nPlease introduce a letter that isn't included in: {letters}, you've already used {letter} ").upper()
+    letters.append(letter)
 
-    # Si la letra no está en la palabra:
-    if comprobacion == []:
-        vidas -= 1 
-        print(f"\nLa letra no está en la palabra. Te quedan {vidas} vidas.\n")
-    # El bucle termina si vidas no es mayor que 0
+    # We check out if the letter guessed by the user is in the word
+    index_letter = letter_finder(word, letter)
 
-    # Si la letra sí está en la palabra:
+    # If the letter isn't in the word, the user gets notified and they lose a live 
+    if index_letter == []:
+        lives -= 1 
+        print(f"\nThe letter {letter} isn't in the word. You have {lives} remaining lives.\n")
+        # The game ends here if lives is not > 0
+
+    # If the letter is in the word, we update and display "white spaces", which shall show the letters of the word that the user has guessed so far
     else:
-        for i in comprobacion:
-            lista_espacios = list(espacios_blanco)
-            lista_espacios[i] = letra
-            espacios_blanco = ''.join(lista_espacios)
-        print(f"\n{espacios_blanco}\n")    
+        for i in index_letter:
+            white_spaces_list = list(white_spaces)
+            white_spaces_list[i] = letter
+            white_spaces = ''.join(white_spaces_list)
+        print(f"\n{white_spaces}\n")    
     
-    # Si se ha completado la palabra
-    if espacios_blanco == palabra:
+    # If the word has already been guessed fully (white_spaces == word) then the game ends
+    if white_spaces == word:
         break
 
-# Informamos de que el juego se termina, bien por haberse quedado sin vidas o por haber adivinado la palabra
-if vidas == 0:
-    print("Tienes cero vidas, se termina el juego")
+# We let the user know that the game has ended and why - they have either won or lost
+if lives == 0:
+    print("You have run out of lives. You've lost :(")
 else:
-    print("Felicidades, has adivinado la palabra")
+    print("Congrats! You've guessed the word :)")

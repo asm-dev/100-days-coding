@@ -1,16 +1,15 @@
-# Función empleada en el proyecto 006-Hangman
-def comprueba_letra (palabra, letra):
+# 006-Hangman
+def letter_finder(word, letter):
     """
-    Esta función nos informa de la posición de una letra en una palabra.
-    Si la letra se encuentra en la palabra, nos devuelve una lista con los valores de la posición,
-    por ejemplo comprueba_letra("casa", "a") nos devuelve [1, 3].
-    Si la letra no se encuentra en la palabra, nos devuelve una lista vacía, []
+    This function informs us of a letter's position in a word.
+    If the letter is found in the word, it returns a list with this letters indexes in the word, e.g. letter_finder("casa", "a") returns [1, 3]
+    If the letter isn't in the word, this function returns an empty list []
     """
-    posicion = []
-    for n in range(len(palabra)):
-        if palabra[n] == letra:
-            posicion.append(n)
-    return posicion
+    idx = []
+    for n in range(len(word)):
+        if word[n] == letter:
+            idx.append(n)
+    return idx
 
 
 # Función empleada en el proyecto 007-Caesar-cipher, dentro de la funcion encriptador_cesar
