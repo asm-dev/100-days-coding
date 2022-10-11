@@ -1,59 +1,53 @@
-# Aproximación a la POO... Bastantes cosas aún por mejorar!
-
-# POR HACER
-# *********
-# Mejorar mostrar() -> dejarlo todo en un solo print
-# y también está pidiendo a gritos un método operar(signo) que una las dos líneas c.operacion = signo + c.mostrar()
-
-
 from functions import input_natural_o_cero
 
 # Creamos la clase
-class calculadora:
+class Calculator:
 
-    def __init__(self, n1, n2):
+    def __init__(self, n1, n2, operator):
         self.num1 = float(n1) 
         self.num2 = float(n2) 
-        self.operacion = ""
+        self.operator = operator
 
-    def sumar(self):
-        return self.num1 + self.num2
-
-    def restar(self):
-        return self.num1 - self.num2
-
-    def dividir(self):
-        return self.num1 / self.num2
-
-    def multiplicar(self):
-        return self.num1 * self.num2
-
-    def mostrar(self):
-
-        if self.operacion not in ('+', '-', '*', '/'):
-            raise Exception("Operacion debe ser +, -, * o '/'")
-
-        if operacion == "+":
-            self.sumar()
-        elif operacion == "-":
-            self.restar()
-        elif operacion == "/":
-            self.dividir()
+    def operation(self, operator):
+        if operator == "+":
+            return self.num1 + self.num2
+        elif operator == "-":
+            return self.num1 - self.num2
+        elif operator == "*":
+            return self.num1 * self.num2
+        elif operator == "/":
+            return self.num1 / self.num2
         else:
-            self.multiplicar()
-#PRINTS?!
+            return "Operation not supported"
 
-
-operaciones_disponibles = ["+", "-", "/", "*"]
 
 num1= input_natural_o_cero ()
 
-operacion = input(f"\nOpciones disponibles:\n\n  {operaciones_disponibles[0]}\n  {operaciones_disponibles[1]}\n  {operaciones_disponibles[2]}\n  {operaciones_disponibles[3]}\n\nTu opción: ")
+available_operations = ["+", "-", "/", "*"]
 
-while not operacion in operaciones_disponibles:
-     operacion = input(f"\nTienes que seleccionar una de las siguientes opciones:\n\n  {operaciones_disponibles[0]}\n  {operaciones_disponibles[1]}\n  {operaciones_disponibles[2]}\n  {operaciones_disponibles[3]}\n\nTu opción: ")
+operator = input(f"\nOpciones disponibles:\n\n  {available_operations[0]}\n  {available_operations[1]}\n  {available_operations[2]}\n  {available_operations[3]}\n\nTu opción: ")
+while not operator in available_operations:
+    operator = input(f"\nYou have to select one of these options:\n\n  {available_operations[0]}\n  {available_operations[1]}\n  {available_operations[2]}\n  {available_operations[3]}\n\nTu opción: ")
 
-num2 = input_natural_o_cero ("\nDime un segundo número: ")
+num2 = input_natural_o_cero ("\nPlease introduce a second number: ")
 
-mi_calculadora = calculadora(num1, num2)
+calculator = Calculator(num1, num2, operator)
+print(f"The operation result is: {calculator.operation(calculator.operator)}")
 
+
+# my_calculator1 = Calculator(2, 2, "+")
+# my_calculator2 = Calculator(2, 2, "-")
+# my_calculator3 = Calculator(2, 2, "/")
+# my_calculator4 = Calculator(2, 2, "*")
+# my_calculator5 = Calculator(2, 2, "A")
+
+# print(f"NUM 1: {my_calculator1.num1}, NUM 2: {my_calculator1.num2}, OPERATOR: {my_calculator1.operator}")
+# print(f"RESULT OPERATION: {my_calculator1.operation(my_calculator1.operator)}")
+# print(f"NUM 1: {my_calculator2.num1}, NUM 2: {my_calculator2.num2}, OPERATOR: {my_calculator2.operator}")
+# print(f"{my_calculator2.operation(my_calculator2.operator)}")
+# print(f"NUM 1: {my_calculator3.num1}, NUM 2: {my_calculator3.num2}, OPERATOR: {my_calculator3.operator}")
+# print(f"{my_calculator3.operation(my_calculator3.operator)}")
+# print(f"NUM 1: {my_calculator4.num1}, NUM 2: {my_calculator4.num2}, OPERATOR: {my_calculator4.operator}")
+# print(f"{my_calculator4.operation(my_calculator4.operator)}")
+# print(f"NUM 1: {my_calculator5.num1}, NUM 2: {my_calculator5.num2}, OPERATOR: {my_calculator5.operator}")
+# print(f"{my_calculator5.operation(my_calculator5.operator)}")

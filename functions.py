@@ -79,16 +79,15 @@ def add_bid(diccionario):
     diccionario[pujador] = puja
     return diccionario
 
-# Función empleada en el proyecto 009-Calculator, tanto en la primera solución como en la aproximación a la POO
-def input_natural_o_cero(pregunta="Introduce un número entero mayor o igual a cero: "):
+# 009-Calculator
+def input_natural_o_cero(question="Please introduce a number bigger or equal to 0: "):
     """
-    Esta funcion nos permite solicitar un input y asegurar que el usuario introduzca un número entero mayor o igual a cero
-    Con esta función evitamos inputs vacíos, inputs de letras, y números negativos. 
+    Gets an input making sure that its a number >= 0. It avoids empty imputs, letters and nums <0
     """
-    num = input(pregunta)
+    num = input(question)
     if num[0] == "+":
         num = num[1:]
     while len(num) == 0 or num.isnumeric() == False or float(num) < 0:
         print("Necesitas introducir un número igual o mayor que cero")
-        num = input(pregunta)
+        num = input(question)
     return float(num)
