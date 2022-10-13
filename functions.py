@@ -13,71 +13,63 @@ def letter_finder(word, letter):
 
 
 # 007-Caesar cipher
-def letter_idx(letra, lista):
+def letter_idx(char, list):
     """
-    Esta función compara una letra con los elementos de una lista.
-    Se itera la lista y se compara cada uno de los elementos de la lista con la letra.
-    Si algún elemento de la lista es igual a la letra, se añade a la lista vacía posiciones el index en la lista de ese elemento.
-    Esta función se emplea dentro de la función César para conseguir el idx en el abecedario de una letra.
+    This function compares a letter with the elements of a list.
+    The list is iterated and each element of the list is compared with the letter.
+    If any element of the list is equal to the letter, the index in the list of that element is added to the empty list.
+    This function is used within the Caesar function to get the idx in the alphabet of a letter.
+    It returns a list.
     """
-    posiciones = []
-    for i in lista:
-        if letra == i:
-            posiciones.append(lista.index(i))
-    return posiciones #Nos devuelve una lista, podemos conseguir el item con posiciones[0]
+    pos = []
+    for i in list:
+        if char == i:
+            pos.append(list.index(i))
+    return pos 
 
 
-# Función empleada en el proyecto 007-Caesar-cipher
-def caesar_cipher(mensaje, encriptar, num, abc):
+# 007-Caesar-cipher
+def caesar_cipher(mes, cipher, num, abc):
     """
-    Esta funcion nos permite cifrar y descifrar un mensaje. Es un encriptador.
-    Los param son el mensaje, el número de saltos en la lista, la dirección de los saltos (+/D para encriptar, -/IZQ para desencriptar) y una lista de valores (generalmente un abecedario)
-    El funcionamiento interno está explicado con comentarios y también hay un par de prints comentados que pueden usarse para entender el funcionamiento de esta función.
-    Internamente utiliza la función pos_letra.
+    This function allows us to encrypt and decrypt a message. It's an encryptor.
+    Its params are the message, the number of hops in the list, the direction of the hops (+/R to encrypt, -/LEFT to decrypt), and a list of values ​​(usually an alphabet)
+    The inner function is explained with comments and there are also a couple of commented impressions that can be used to understand the function of this function.
+    It internally uses the pos_letter function.
     """
-    if encriptar == "D":
+    if cipher != "D" and cipher != "C":
+        print("\nThe param cipher should be either D, to decipher, or C, to cipher\n")
+        return
+    elif cipher == "D":
         num = -num 
-        print(f"\nTu mensaje es {mensaje}, y lo vamos a desencriptar, usando un valor de {num}\n")
-    elif encriptar == "C":
-        print(f"\nTu mensaje es {mensaje}, y lo vamos a encriptar, usando un valor de {num}\n")
-    else:
-        print("\nEncriptar debe de ser D o E, la función no admite otras opciones para este parámetro\n")
 
-    lista_mensaje = list(mensaje) #Pasamos de string a list
-    nuevo_mensaje_lista = [] #Creamos una lista vacía para el nuevo mensaje
+    print(f"\nYour message is {mes}, and we're going to encrypt it using a value of {num}\n")
+ 
+    mes_list = list(mes) 
+    new_mes_list = []
 
-    for letra in lista_mensaje: #Iteramos sobre el mensaje (lista compuesta por cada una de las letras del mensaje a encriptar)
+    for char in mes_list: 
 
-        posicion_letra = letter_idx(letra, abc) #Comparamos cada letra del mensaje con las letras del abecedario, cuando hay coincidencia, nos devuelve el index en el abcedario
-        nueva_posicion_letra = posicion_letra[0] + num #Añade el valor al index de la letra del mensaje
+        char_position = letter_idx(char, abc) 
+        new_char_position = char_position[0] + num 
 
-        if nueva_posicion_letra > len(abc): #Puede ser que la nueva posición sea mayor que la longitud del abecedario, por ejemplo, index de Z + 5
-            nueva_posicion_letra = nueva_posicion_letra - len(abc)
-            nueva_letra = abc[nueva_posicion_letra]
+        if new_char_position > len(abc):
+            new_char_position = new_char_position - len(abc)
+        new_char = abc[new_char_position]
 
-            # PRINTS PARA ENTENDER QUÉ PASA AQUÍ:
-            # print(f"Letra: {letra}, Posición: {posicion_letra}, Nueva posicion: {nueva_posicion_letra}, Nueva letra:{nueva_letra}") #tiene que ser e
-            # print(f"Longitud abd: {len(abecedario)}")
+        new_mes_list.append(new_char)
+        new_message = ''.join(new_mes_list)
 
-        else:
-            nueva_letra = abc[nueva_posicion_letra]
-            # PRINT PARA ENTENDER QUÉ PASA AQUÍ:
-            # print(f"Letra: {letra}, Posición: {posicion_letra}, Nueva posicion: {nueva_posicion_letra}, Nueva letra: {nueva_letra}") #posicion de la letra en el abecedario
+    return new_message
         
-        nuevo_mensaje_lista.append(nueva_letra)
-        nuevo_mensaje = ''.join(nuevo_mensaje_lista)
-
-    return nuevo_mensaje
-        
-# Función empleada en el proyecto 008-Blind-auction
-def add_bid(diccionario):
+# 008-Blind-auction
+def add_bid(dict):
     """
-    Esta funcion nos permite añadir un nuevo par clave-valor a un diccionario.
+    Allows us to add a new keyvalue pair to a dictionary
     """
-    pujador = input("Nombre: ")
-    puja = input("Puja: ")
-    diccionario[pujador] = puja
-    return diccionario
+    bidder = input("Name: ")
+    bid = input("Bid: ")
+    dict[bidder] = bid
+    return dict
 
 # 009-Calculator
 def input_natural_o_cero(question="Please introduce a number bigger or equal to 0: "):

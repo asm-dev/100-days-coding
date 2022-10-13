@@ -1,39 +1,31 @@
-def inputNaturalOCero(pregunta="Introduce un número entero mayor o igual a cero: "):
-    num = input(pregunta)
-    if num[0] == "+":
-        num = num[1:]
-    while len(num) == 0 or num.isnumeric() == False or int(num) < 0:
-        print("Necesitas introducir un número igual o mayor que cero")
-        num = input(pregunta)
-    return int(num)
+from functions import input_natural_o_cero
 
-def multiplicacion (n1, n2):
-    return print(f"\nLa multiplicación de {n1} y {n2} es: {n1 * n2}")
+def multiply(n1, n2):
+    return print(n1 * n2)
 
-def division (n1, n2):
-    return print(f"\nLa división de {n1} y {n2} es: {n1 / n2}")
+def divide(n1, n2):
+    return print(n1 / n2)
 
-def suma (n1, n2):
-    return print(f"\nLa suma de {n1} y {n2} es: {n1 + n2}")
+def add(n1, n2):
+    return print(n1 + n2)
 
-def resta (n1, n2):
-    return print(f"\nLa resta de {n1} y {n2} es: {n1 - n2}")
+def rest(n1, n2):
+    return print(n1 - n2)
 
-operaciones = {
-    "/" : division,
-    "*" : multiplicacion,
-    "+" : suma,
-    "-" : resta
+operators = {
+    "/" : divide,
+    "*" : multiply,
+    "+" : add,
+    "-" : rest
 }
 
-n1 = inputNaturalOCero ()
+n1 = input_natural_o_cero()
 
-operacion = input ("\nOpciones disponibles:\n\n    /\n    *\n    +\n    -\n\nTu opción: ")
+op = input("\nAvailable options:\n\n    /\n    *\n    +\n    -\n\nYour choice: ")
 
-while not operacion in operaciones.keys():
-     operacion = input ("\nTienes que seleccionar una de las siguientes opciones:\n\n    /\n    *\n    +\n    -\n\nTu opción: ")
+while not op in operators.keys():
+     op = input("\nThese are the available choices:\n\n    /\n    *\n    +\n    -\n\nPlease introduce your choice: ")
 
-n2 = inputNaturalOCero ("\nDime un segundo número: ")
+n2 = input_natural_o_cero("\nPlease introduce a second number: ")
 
-operacion_a_realizar = operaciones[operacion]
-operacion_a_realizar (n1, n2)
+operators[op](n1, n2)

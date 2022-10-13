@@ -21,11 +21,11 @@ class Calculator:
             return "Operation not supported"
 
 
-num1= input_natural_o_cero ()
+num1 = input_natural_o_cero ()
 
 available_operations = ["+", "-", "/", "*"]
 
-operator = input(f"\nOpciones disponibles:\n\n  {available_operations[0]}\n  {available_operations[1]}\n  {available_operations[2]}\n  {available_operations[3]}\n\nTu opción: ")
+operator = input(f"\nAvailable options:\n\n  {available_operations[0]}\n  {available_operations[1]}\n  {available_operations[2]}\n  {available_operations[3]}\n\nTu opción: ")
 while not operator in available_operations:
     operator = input(f"\nYou have to select one of these options:\n\n  {available_operations[0]}\n  {available_operations[1]}\n  {available_operations[2]}\n  {available_operations[3]}\n\nTu opción: ")
 
