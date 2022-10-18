@@ -58,7 +58,7 @@ class Rock(Play):
             result = Result.EQUAL
         return result
 
-r = Rock()
-p = Paper()
-s = Scissors()
-print(s.compare(p))
+# r = Rock()
+# p = Paper()
+# s = Scissors()
+# print(s.compare(p))
