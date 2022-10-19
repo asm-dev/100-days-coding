@@ -10,6 +10,9 @@ class Play(object):
     """
     Represents a play
     """
+    def description(self):
+        pass
+
     def compare(self, otherPlay):
         """
         It compares itself with the other play and returns a Result
@@ -17,6 +20,10 @@ class Play(object):
         pass
 
 class Paper(Play):
+    
+    def description(self):
+        return "Paper"
+
     def compare(self, otherPlay):
         """
         Compares paper agains other plays and returns a Result
@@ -31,6 +38,10 @@ class Paper(Play):
         return result
 
 class Scissors(Play):
+
+    def description(self):
+        return "Scissors"
+
     def compare(self, otherPlay):
         """
         Compares scissor agains other plays and returns a Result
@@ -45,6 +56,10 @@ class Scissors(Play):
         return result
 
 class Rock(Play):
+
+    def description(self):
+        return "Rock"
+
     def compare(self, otherPlay):
         """
         Compares scissor agains other plays and returns a Result
