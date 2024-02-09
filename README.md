@@ -1,5 +1,6 @@
 # 100-days-coding
 
+
 Welcome to my 100 Days of Coding repository! 🐍
 
 This is where I've stored projects from my early programming journey, inspired by Angela Yu's Python course. 
