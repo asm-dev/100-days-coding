@@ -1,5 +1,9 @@
 # 100-days-coding
 
-Repository used to store projects done as part of a 100 Days of Coding (Python) challenge.
+Welcome to my 100 Days of Coding repository! 🐍
 
-These projects have been inspired by an Angela Yu's Python course. Even though I have followed her lessons in order to learn new things and tricks where needed, I have tried to autonomously solve the proposed projects and code challenges on my own by checking out documentation and other souces first, which has allowed me to gain lots of knowledge and to improve my skills :)
+This is where I've stored projects from my early programming journey, inspired by Angela Yu's Python course. 
+
+Though I've ventured into full-time JS work since then, this challenge remains a cherished memory. 
+
+💼 Highly recommend Angela's course for anyone diving into programming.
