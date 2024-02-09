@@ -6,4 +6,4 @@ This is where I've stored projects from my early programming journey, inspired b
 
 Though I've ventured into full-time JS work since then, this challenge remains a cherished memory. 
 
-💼 Highly recommend Angela's course for anyone diving into programming.
+Highly recommend Angela's course for anyone diving into programming.
